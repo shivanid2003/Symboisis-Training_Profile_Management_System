@@ -1,0 +1,46 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+    <link rel="stylesheet" href="~/css/style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="~/" class="logo"><img src="~/img/userlogo.jpeg" alt="logo"></a>
+            <ul class="navbar">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a href="#about-us">About</a></li>
+                <li><a href="#walkthrough">Walkthrough</a></li>
+                <li><a asp-controller="Home" asp-action="Category">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="category-page">
+            <h1>Select Profile Type</h1><br>
+            <div class="category-cards">
+                <div class="category-card" onclick="location.href='@Url.Action("ViewPlacement", "Category")'">
+                    <img src="~/img/placement.png" alt="Placements Image">
+                    <h2>Placements</h2>
+                </div>
+                <div class="category-card" onclick="location.href='@Url.Action("ViewSocialMedia", "Category")'">
+                    <img src="~/img/social-media.png" alt="Social Media Image">
+                    <h2>Social Media</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

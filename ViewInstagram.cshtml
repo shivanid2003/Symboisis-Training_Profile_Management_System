@@ -1,0 +1,88 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Accura.Models.ViewModels.InstagramViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile Creation</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="~/" class="logo"><img src="~/img/userlogo.jpeg" alt="logo"></a>
+            <ul class="navbar">
+                <li><a asp-page="/Index">Home</a></li>
+                <li><a href="#about-us">About</a></li>
+                <li><a href="#walkthrough">Walkthrough</a></li>
+                <li><a asp-page="/Category">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a asp-page="/Login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-creation">
+            <h1>Create Instagram Profile</h1>
+            <form asp-action="ViewInstagram" method="post" enctype="multipart/form-data" class="instagram-form">
+                <!-- Profile Picture -->
+                <h2>Profile Picture</h2>
+                <label for="profilePicture">Upload Profile Picture:</label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+
+                <!-- Full Name -->
+                <h2>Full Name</h2>
+                <label for="fullName">Display Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="John Doe">
+
+                <!-- Username -->
+                <h2>Username</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="john_doe" required>
+
+
+                <!-- Email Address -->
+                <h2>Email</h2>
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" name="Email" placeholder="john@gmail.com" required>
+
+                <!-- Phone -->
+                <h2>Contact</h2>
+                <label for="Contact">Contact:</label>
+                <input type="text" id="Contact" name="Contact" placeholder="1234567890" required>
+
+                <!-- Date of Birth -->
+                <h2>Date of Birth</h2>
+                <label for="Dob">Date of Birth:</label>
+                <input type="date" id="Dob" name="Dob" required>
+
+                <!-- Gender -->
+                <h2>Gender</h2>
+                <label for="Gender">Gender:</label>
+                <select id="Gender" name="Gender">
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+
+                <!-- Bio -->
+                <h2>Bio</h2>
+                <label for="Bio">Short Description:</label>
+                <textarea id="Bio" name="Bio" placeholder="Tell us about yourself..." rows="4"></textarea>
+
+                <!-- Website -->
+                <h2>Website</h2>
+                <label for="Website">Personal or Professional Website:</label>
+                <input type="url" id="Website" name="Website" placeholder="https://www.example.com">
+
+                <button type="submit">Save Profile</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

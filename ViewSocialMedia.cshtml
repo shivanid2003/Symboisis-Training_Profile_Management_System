@@ -1,0 +1,44 @@
+﻿@page
+@{
+    ViewBag.Title = "Social Media Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Category</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+<nav class="nav-wrapper">
+    <div class="container">
+            <a href="javascript:void(0);" class="logo"><img src="~/img/userlogo.jpeg" alt="logo"></a>
+            <ul class="navbar">
+            <li><a asp-page="/Index">Home</a></li>
+            <li><a href="@Url.Page("/Index")#about-us">About</a></li>
+            <li><a href="@Url.Page("/Index")#walkthrough">Walkthrough</a></li>
+            <li><a asp-page="/Category">Categories</a></li>
+            <li><a href="@Url.Page("/Index")#contact">Contact</a></li>
+            <li><a asp-page="/Login">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="category-page">
+        <h1>Select Profile Type</h1><br>
+        <div class="category-cards">
+                <div class="category-card" onclick="window.location.href='@Url.Action("ViewInstagram", "Instagram")'">
+                <img src="~/img/insta-card.png" alt="Instagram Image">
+                <h2>Instagram</h2>
+            </div>
+                <div class="category-card" onclick="window.location.href=@Url.Action("ViewFaceBook", "FaceBook")'">
+                <img src="~/img/fb-card.png" alt="Facebook Image">
+                <h2>Facebook</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

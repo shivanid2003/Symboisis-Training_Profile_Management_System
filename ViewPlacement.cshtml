@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Placement Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Category</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+<nav class="nav-wrapper">
+    <div class="container">
+        <a href="javascript:void(0);" class="logo"><img src="~/img/userlogo.jpeg" alt="logo"></a>
+        <ul class="navbar">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Index", "Home")#about-us">About</a></li>
+            <li><a href="@Url.Action("Index", "Home")#walkthrough">Walkthrough</a></li>
+            <li><a href="@Url.Action("Category", "Category")">Categories</a></li>
+            <li><a href="@Url.Action("Index", "Home")#contact">Contact</a></li>
+            <li><a href="@Url.Action("Login", "Account")">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="category-page">
+        <h1>Select Profile Type</h1><br>
+        <div class="category-cards">
+                <div class="category-card" onclick="window.location.href='@Url.Action("ViewLinkedIn", "LinkedIn")'">
+                <img src="~/img/linkedin-card.png" alt="LinkedIn Image">
+                <h2>LinkedIn</h2>
+            </div>
+                <div class="category-card" onclick="window.location.href='@Url.Action("ViewIndeed", "Placement")'">
+                <img src="~/img/indeed-card.png" alt="Indeed Image">
+                <h2>Indeed</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

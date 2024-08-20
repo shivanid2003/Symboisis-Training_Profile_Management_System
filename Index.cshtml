@@ -1,0 +1,239 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model Accura.Models.Contact
+
+@{
+    Layout = null;
+}
+
+@{
+    var userEmail = Context.Session.GetString("UserEmail");
+    var userName = Context.Session.GetString("UserName");
+    var userMobile = Context.Session.GetString("UserMobile");
+    var userLocation = Context.Session.GetString("UserLocation");
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Generation Website</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="~/js/script.js" defer></script>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="~/" class="logo"><img src="~/img/userlogo.jpeg" alt="logo"></a>
+            <ul class="navbar">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a href="#about-us">About</a></li>
+                <li><a href="#walkthrough">Walkthrough</a></li>
+                <li><a asp-controller="Home" asp-action="Category">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-img-wrapper">
+                    <img src="~/img/user.png" alt="Profile Picture" class="profile-img">
+                </div>
+                <div class="card-content">
+                    <span class="card-title">@userName</span>
+                    <p style="color: gray;">Email:<br> @userEmail</p>
+                    <p style="color: gray;">Mobile:<br> @userMobile</p>
+                    <p style="color: gray;">Location:<br> @userLocation</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="view-profile-button">VIEW PROFILE >> </a>
+                </div>
+                <div class="social-media-icons">
+                    <a href="#"><img src="~/img/instagram.png" alt="instagram"></a>
+                    <a href="#"><img src="~/img/twitter.png" alt="Twitter"></a>
+                    <a href="#"><img src="~/img/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slideshow-container">
+            <!-- Slideshow images -->
+            <div class="mySlides fade">
+                <img src="~/img/slide1.jpeg">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="~/img/slide2.jpeg">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="~/img/slide3.jpeg">
+            </div>
+        </div>
+    </div>
+
+    <!--About us-->
+    <section class="about-us" id="about-us">
+        <h2>About Us</h2><br><br>
+        <div class="about-us-content">
+            <div class="image-container">
+                <img src="~/img/registeration.png" alt="About Us Image">
+            </div>
+            <div class="text-content">
+                <p>
+                    Our Profile Generation Website helps you craft optimized profiles<br>
+                    for job placements and social media. After logging in, generate<br>
+                    profiles for LinkedIn, Indeed, Instagram, or Facebook. We assess <br>
+                    their potential success, suggest improvements, and allow you to <br>
+                    download them as PDFs. Our video guide makes managing <br>
+                    profiles easy.
+                </p>
+                <div class="category-button">
+                    <a asp-controller="Category" asp-action="Index" class="category-link"><u>Create Profile</u></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Walkthrough -->
+    <section class="walkthrough">
+        <div class="header">
+            <h2>How It Works</h2><br>
+            <p>Follow these steps to create, evaluate, and download your profiles.</p><br><br>
+        </div>
+        <div class="step-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <img src="~/img/step1.png" alt="Register">
+                <a asp-controller="Account" asp-action="Login">
+                    <h3>Register and Log In</h3>
+                </a>
+                <p>Create your profile.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <img src="~/img/step2.png" alt="Enter Details">
+                <a asp-controller="Category" asp-action="Index">
+                    <h3>Enter Profile Details</h3>
+                </a>
+                <p>Provide details for Choosed Profile</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <img src="~/img/step3.png" alt="Generate Profile">
+                <a href="user_profile.html">
+                    <h3>Generate and Analyze</h3>
+                </a>
+                <p>Get your profile generated and analyzed for job placement or social media success.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <img src="~/img/step4.png" alt="Download Profile">
+                <a href="user_profile.html">
+                    <h3>Preview and Download</h3>
+                </a>
+                <p>Preview your profile, make changes if needed, and download it as a PDF.</p>
+            </div>
+        </div><br><br>
+
+        <section class="walkthrough" id="walkthrough">
+            <h2>Walkthrough</h2><br>
+            <div class="video-container">
+                <video controls>
+                    <source src="~/img/vido.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+    </section>
+
+    <h1 id="contact">Contact Us</h1>
+
+    <div class="main-content">
+        <div class="contact-form">
+            <p>Get In Touch</p>
+            <form asp-controller="Home" asp-action="Index" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name..." required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@yourmail.com" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Title..." required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Type Here..." required></textarea>
+
+                <button type="submit">Send Now</button>
+            </form>
+
+        </div>
+
+        <div class="contact-container">
+            <p class="contact-header">
+                Feel free to get in touch with us! 😊 We are here to assist you. You can reach us through the following channels:
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <p><strong>Phone Number</strong><br>+5282 4032 567</p>
+                </div>
+                <div class="contact-item">
+                    <p><strong>Email Address</strong><br>Acura12@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <p><strong>Whatsapp</strong><br>9958453785</p>
+                </div>
+                <div class="contact-item">
+                    <p><strong>Our Office</strong><br>Pune, Maharashtra</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="~/img/userlogo.jpeg" alt="Logo">
+            </div>
+            <div class="footer-social">
+                <a href="#"><img src="~/img/instagram.png" alt="Social Icon"></a>
+                <a href="#"><img src="~/img/twitter.png" alt="Social Icon"></a>
+                <a href="#"><img src="~/img/facebook.png" alt="Social Icon"></a>
+                <a href="#"><img src="~/img/google.png" alt="Social Icon"></a>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3></h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a href="#!">About</a></li>
+                        <li><a href="#!">Service</a></li>
+                        <li><a href="#!">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get in Touch</h3>
+                    <p>Pune, Maharashtra</p>
+                    <p>Phone: +91-1234567809</p>
+                    <p>Email: acura@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024</p>
+        </div>
+    </section>
+</body>
+
+</html>

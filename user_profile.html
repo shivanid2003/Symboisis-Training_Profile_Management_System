@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>User Profile 👤</title>
+    <style>
+        /* Navigation Bar Styles */
+        .nav-wrapper {
+            background-color: #1E1E1E; /* Darker background for the nav bar */
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust logo height */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: RIGHT;
+            flex-grow: 1;height: 5PX;
+            align-items: RIGHT;
+        }
+
+        .navbar li {
+            margin-left: 20px;
+        }
+
+        .navbar li a {
+            color: #E0E0E0; /* Light text color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.3rem;
+            margin: 0 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .navbar li a:hover {
+            color: yellow; /* Highlight color on hover */
+        }
+
+        .navbar li a:active {
+            color: purple; /* Color on active click */
+        }
+
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px;
+        }
+
+        .col {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .col.s3 {
+            width: 25%;
+        }
+
+        .col.s9 {
+            width: 75%;
+        }
+
+        .col.s4 {
+            width: 33.33%;
+        }
+
+        .card-panel {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            background-color:#1E1E1E ;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .logo {
+            max-width: 100px;
+            height: 50px;
+        }
+
+        .profile-img {
+            max-width: 100px;
+            height: 50px;
+        }
+
+        .btn-large {
+            display: block;
+            width: 150px;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: black;
+            color:yellow;
+        }
+
+        .btn-large:hover {
+            color:black;
+            background-color: yellow;
+
+        }
+
+        .determinate {
+            background-color: #00ADB5;
+            height: 100%;
+            width: 75%;
+        }
+
+        h2 {
+            color: yellow;
+            text-align: center;
+        }
+        h3{
+            margin-left: 300px;
+            color: white;
+        }
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        p {
+            margin: 5px 0;
+            color: white;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .btn-preview {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: yellow;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .btn-preview:hover {
+            color:black;
+            background-color: yellow;
+        }
+
+        
+        .proficiency-section {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .proficiency-text {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .proficiency-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .proficiency-chart canvas {
+            max-width: 400px;
+            max-height: 400px;
+        }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .star-rating img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .star-rating p {
+            color: yellow;
+            margin-left: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /*Suggestion section*/
+
+        .suggestions-section {
+            background-color: black;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .suggestions-section h2 {
+            color:yellow;
+            text-align: center;
+        }
+
+        .suggestions-section .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 20px -10px;
+        }
+
+        .suggestions-section .col.s4 {
+            width: 30%;
+            background-color:#1E1E1E ;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .suggestions-section .col.s4 h4 {
+            color:white;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .suggestions-section .col.s4 p {
+            color: #555;
+            font-size: 14px;
+            margin: 0;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="#!" class="logo"><img src="img/userlogo.jpeg" alt="logo"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about-us">About</a></li>
+                <li><a href="#walkthrough">Walkthrough</a></li>
+                <li><a href="Category.html">Categories</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+                <div class="card-panel">
+                    <div class="center">
+                        <img src="img/userlogo.jpeg" alt="Logo" class="circle logo">
+                        <p>Logo</p><br><br>
+                    </div>
+                    <a href="#!" class="btn-large">My Profile</a>
+                    <a href="#!" class="btn-large">Preview</a>
+                    <a href="#!" class="btn-large">Proficiency</a>
+                    <a href="#!" class="btn-large">Suggestions</a>
+                    <a href="#!" class="btn-large">Logout</a>
+                </div>
+
+            <div class="col s9">
+                <div class="card-panel">
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="img/google.png" alt="Profile Picture" class="circle profile-img>
+                            <a href="#!" class="btn-large" style="margin-top: 5px;"></a>
+                        </div>
+                        <div class="col s9"><br><br>
+                            <h4>Mr. Gregore Joy</h4><br>
+                            <p>gregore@example.com</p><br>
+                            <p>Software Engineer</p><br>
+                            <p>756-9856-4562</p><br>
+                            <p>New York, USA</p>
+                        </div>
+                    </div>
+                </div><br>
+
+                <!-- Generated Profile List Card -->
+
+                    <h2>Generated Profile Preview </h2>
+                
+                <!-- LinkedIn Profile Preview Card -->
+                <div class="card-panel">
+                    <h4>LinkedIn Profile</h4>
+                    <a href="#!" class="btn-preview">Preview</a>
+                </div><br>
+
+                <!-- Instagram Profile Preview Card -->
+                <div class="card-panel">
+                    <h4>Instagram Profile</h4>
+                    <a href="#!" class="btn-preview">Preview</a>
+                </div>
+
+                <!-- Proficiency Section -->
+                <div class="proficiency-section">
+                    <h2>Proficiency Analysis</h2>
+                    <h3>Below is the proficiency analysis of your generated profile.</h3>
+                    <div class="proficiency-chart">
+                        <canvas id="proficiencyChart"></canvas>
+                    </div><br><br>
+                    <div class="star-rating">
+                        <img src="img/star.png" alt="Star Icon">
+                        <h2>85% Proficient</h2>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+    <script>
+        // Data for the proficiency chart
+        const data = {
+            labels: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
+            datasets: [{
+                label: 'Proficiency',
+                data: [20, 30, 25, 25], // Sample data values
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Config for the proficiency chart
+        const config = {
+            type: 'pie', // Change this to 'bar' for a bar chart
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Proficiency Chart'
+                    }
+                }
+            },
+        };
+
+        // Render the proficiency chart
+        const proficiencyChart = new Chart(
+            document.getElementById('proficiencyChart'),
+            config
+        );
+    </script>
+
+         <!-- Suggestions Section -->
+         <div class="suggestions-section">
+            <h2>Suggestions</h2>
+            <div class="row">
+                <div class="col s4">
+                    <h4>Improve Your Skills</h4>
+                    <p>Consider taking online courses or workshops to enhance your skills in areas where you need improvement.</p>
+                </div>
+                <div class="col s4">
+                    <h4>Network with Others</h4>
+                    <p>Connect with professionals in your field through online communities or industry events.</p>
+                </div>
+                <div class="col s4">
+                    <h4>Stay Updated</h4>
+                    <p>Keep up with the latest trends and technologies by reading industry publications and attending conferences.</p>
+                </div>
+            </div>
+        </div> 
+        
+    </div>    
+
+</body>
+</html>
